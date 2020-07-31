@@ -15,7 +15,11 @@ def miniMaxSum(arr):
     sum_min = 0
     arr_len = len(arr)
     arr_offset = 1
-
+    # Here's my update
+    # f_arr = arr.pop(0)
+    # sum_max = sum(f_arr)
+    # f_arr = arr.pop(arr_len - 1 )
+    # sum_min = sum(f_arr) 
     for index in range(arr_len):
         if( index + arr_offset ) == arr_len:
             break
