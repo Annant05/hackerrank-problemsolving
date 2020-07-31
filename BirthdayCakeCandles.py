@@ -11,7 +11,9 @@ import sys
 # Complete the birthdayCakeCandles function below.
 def birthdayCakeCandles(ar):
     max_elem = max(ar)
-    count = 0 
+    count = 0
+    # You may use this
+    # count = ar.count( max_elem )
     for elem in ar:
         if (elem == max_elem):
             count +=1
