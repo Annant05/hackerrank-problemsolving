@@ -1,52 +1,36 @@
 #!/bin/python3
 
-# URL : https://leetcode.com/problems/longest-substring-without-repeating-characters/
+'''
+3. Longest Substring Without Repeating Characters
 
-# Sample inputs:
-# input_string = "abcabcbb"
+https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
+'''
+
+input_string = "abcabcbb"
 # input_string = "bbbbb"
-input_string = "pwwkew"
+# input_string = "pwwkew"
 # input_string = ""
 
 
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        map = {}
+    def lengthOfLongestSubstring(self, s):
+        uniq = {}
         longest = 0
-        j = 0
-        print(
-            f'Before:\n Index: 0 \t Char: "" \t J: {j} \t Longest: {longest} \t Map: {map}')
+        left = 0
+        right = 0
 
-        for index, character in enumerate(s):
-            if character in map:
-                j = max(j, map[character] + 1)
-            map[character] = index
-            longest = max(longest, index - j+1)
+        while right < len(s):
+            if s[right] not in uniq.keys():
+                uniq[s[right]] = right
+                longest = max(longest, len(uniq))
+                right += 1
+            else:
+                # print(uniq, s[left])
+                uniq.pop(s[left])
+                left += 1
 
-            print(
-                f'After:\n Index: {index} \t Char: {character} \t J: {j} \t Longest: {longest} \t Map: {map}')
-
-        print(
-            f'Final:\n Index: {index} \t Char: {character} \t J: {j} \t Longest: {longest} \t Map: {map}')
-
-        # uniq_dict = {}
-
-        # substring1 = ""
-        # substring2 = ""
-
-        # for character in s:
-        #     if character not in substring1:
-        #         substring1 += character
-        #     else:
-        #         substring2 += character
-
-        #     if substring1 == substring2:
-        #         uniq_dict.add(substring1)
-        #         substring1 = ""
-
-        # uniq_dict.append(substring2)
-        # # print(f'substring1: {substring1} \nsubstring2: {substring2}')
-        # print(f'Uniq List: {uniq_dict}')
+        print(uniq, longest)
 
 
 Solution().lengthOfLongestSubstring(s=input_string)
